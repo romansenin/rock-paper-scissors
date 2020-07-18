@@ -1,25 +1,53 @@
-.images {
-  display: flex;
+*,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.images .box {
+body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.selection,
+.battle {
+  display: flex;
+}
+
+.box {
   border: 1px solid #eeeeee;
-  padding: 10px;
-  margin-right: 10px;
+  padding: 12px;
+}
+
+.selection .box {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.selection .box:hover {
+  background-color: #eeeeee;
 }
 
 .box .box-image {
-  flex-grow: 1;
   display: flex;
   align-items: center;
   width: 200px;
+  height: 20em;
 }
 
 .box .box-image img {
   width: 100%;
 }
 
+.battle {
+  display: none;
+  opacity: 0;
+}

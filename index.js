@@ -4,23 +4,22 @@ const userBox = battleDiv.querySelector(".box");
 const userImg = userBox.querySelector("img");
 const computerBox = battleDiv.querySelector(".box:last-child");
 const computerImg = computerBox.querySelector("img");
-const restartBtn = document.getElementById("btn-restart");
+const restartDiv = document.querySelector(".restart");
+const restartBtn = restartDiv.querySelector("button");
 
-let numWins = 0;
-let numLosses = 0;
-let numTies = 0;
+displayStats();
 
 document.querySelectorAll(".selection .box").forEach((box) => {
   box.onclick = handleClick;
 });
 
-restartBtn.onclick = function() {
-  this.style.display = "none";
+restartBtn.onclick = function () {
+  restartDiv.style.display = "none";
   battleDiv.style.display = "none";
   selectionDiv.style.display = "flex";
   userBox.style.backgroundColor = "#fff";
   computerBox.style.backgroundColor = "#fff";
-}
+};
 
 function handleClick() {
   selectionDiv.style.display = "none";
@@ -50,7 +49,7 @@ async function playGame(userChoice) {
 
   if (userChoice === computerChoice) {
     // tie
-    numTies++;
+    incrementStat("ties");
     // set both user's and computer's boxes to green background color
     battleDiv.querySelector(".box").style.backgroundColor = "#00ff00";
     battleDiv.querySelector(".box:last-child").style.backgroundColor =
@@ -61,17 +60,17 @@ async function playGame(userChoice) {
     (userChoice === "P" && computerChoice === "R") ||
     (userChoice === "S" && computerChoice === "P")
   ) {
-    numWins++;
+    incrementStat("wins");
     // set user's box to green background color
     battleDiv.querySelector(".box").style.backgroundColor = "#00ff00";
   } else {
     // computer wins
-    numLosses++;
+    incrementStat("losses");
     // set computer's box to green background color
     battleDiv.querySelector(".box:last-child").style.backgroundColor =
       "#00ff00";
   }
-  restartBtn.style.display = "block";
+  restartDiv.style.display = "flex";
 }
 
 function decisionWheel(numTimes, count = 1, lastChoice = "Rock") {
@@ -91,4 +90,25 @@ function decisionWheel(numTimes, count = 1, lastChoice = "Rock") {
       resolve(choice);
     }, 180 * 0.1 * count);
   });
+}
+
+function displayStats() {
+  ["wins", "ties", "losses"].forEach((stat) => {
+    displayStat(stat);
+  });
+}
+
+function incrementStat(stat) {
+  localStorage.setItem(stat, parseInt(localStorage.getItem(stat)) + 1);
+  displayStat(stat);
+}
+
+function displayStat(stat) {
+  const value = localStorage.getItem(stat);
+  if (!value) {
+    localStorage.setItem(stat, "0");
+    document.querySelector(`.${stat} span`).innerHTML = "0";
+  } else {
+    document.querySelector(`.${stat} span`).innerHTML = parseInt(value);
+  }
 }

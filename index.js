@@ -11,11 +11,11 @@ function handleClick() {
   selectionDiv.style.display = "none";
   battleDiv.style.display = "flex";
   battleDiv.style.opacity = 1;
-  battleDiv.style.margin = "0 auto";
-  console.log(this);
-  userImg.src = generateSrc(this.getAttribute("data-itemname"));
-  userImg.alt = this.getAttribute("data-itemname");
-  decisionWheel(15);
+
+  const userChoice = this.getAttribute("data-itemname");
+  userImg.src = generateSrc(userChoice);
+  userImg.alt = userChoice;
+  playGame(userChoice.charAt(0));
 }
 
 function generateSrc(name) {
@@ -29,15 +29,31 @@ function choose(lastChoice) {
   ];
 }
 
+async function playGame(userChoice) {
+  const computerChoice = (await decisionWheel(15)).charAt(0);
+  if (userChoice === computerChoice) {
+    battleDiv.querySelector(".box").style.backgroundColor = "#00ff00";
+    battleDiv.querySelector(".box:last-child").style.backgroundColor = "#00ff00";
+  } else if (
+    (userChoice === "R" && computerChoice === "S") ||
+    (userChoice === "P" && computerChoice === "R") ||
+    (userChoice === "S" && computerChoice === "P")
+  ) {
+    battleDiv.querySelector(".box").style.backgroundColor = "#00ff00";
+  } else {
+    battleDiv.querySelector(".box:last-child").style.backgroundColor = "#00ff00";
+  }
+}
+
 function decisionWheel(numTimes, count = 1, lastChoice = "Rock") {
-  setTimeout(function () {
-    const choice = choose(lastChoice);
-    computerImg.src = generateSrc(choice);
-    computerImg.alt = choice;
-    if (count < numTimes) {
-      decisionWheel(numTimes, ++count, choice);
-    } else {
-      // computer done choosing
-    }
-  }, 200 * 0.1 * count);
+  return new Promise((resolve) => {
+    setTimeout(function () {
+      const choice = choose(lastChoice);
+      computerImg.src = generateSrc(choice);
+      computerImg.alt = choice;
+      if (count < numTimes)
+        return resolve(decisionWheel(numTimes, ++count, choice));
+      resolve(choice);
+    }, 200 * 0.1 * count);
+  });
 }

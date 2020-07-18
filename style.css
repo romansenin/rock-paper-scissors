@@ -25,15 +25,27 @@ h1 {
 .box {
   border: 1px solid #eeeeee;
   padding: 12px;
+  transition: background-color 0.2s;
 }
 
 .selection .box {
   cursor: pointer;
-  transition: background-color 0.2s;
 }
 
 .selection .box:hover {
   background-color: #eeeeee;
+}
+
+.selection .box:first-child {
+  border-right: none;
+}
+
+.selection .box:last-child {
+  border-left: none;
+}
+
+.battle .box:first-child {
+  border-right: none;
 }
 
 .box .box-image {

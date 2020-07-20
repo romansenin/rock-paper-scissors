@@ -17,7 +17,7 @@ h1 {
 }
 
 .stats {
-  border: 1px solid #eee;
+  border: 1px solid #ddd;
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -32,13 +32,14 @@ h1 {
 .stats,
 .selection,
 .battle {
+  border: 1px solid #ddd;
   border-radius: 3px;
+  box-shadow: 2px 2px rgb(241, 241, 241);
 }
 
 .selection,
 .battle {
   display: flex;
-  border: 1px solid #eee;
 }
 
 .stats .top-box {
@@ -66,15 +67,15 @@ h1 {
 }
 
 .selection .box:first-child {
-  border-right: 1px solid #eee;
+  border-right: 1px solid #ddd;
 }
 
 .selection .box:nth-child(3) {
-  border-left: 1px solid #eee;
+  border-left: 1px solid #ddd;
 }
 
 .battle .box:first-child {
-  border-right: 1px solid #eee;
+  border-right: 1px solid #ddd;
 }
 
 .box .box-image {

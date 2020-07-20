@@ -5,8 +5,8 @@ const userImg = userBox.querySelector("img");
 const computerBox = battleDiv.querySelector(".box:last-child");
 const computerImg = computerBox.querySelector("img");
 const restartDiv = document.querySelector(".restart");
-const restartBtn = restartDiv.querySelector("button");
-const resetStatsBtn = document.getElementById("reset-btn");
+const restartBtn = restartDiv.querySelector("#btn-restart");
+const resetStatsBtn = document.getElementById("btn-reset");
 
 displayStats();
 
@@ -107,7 +107,7 @@ function displayStat(stat) {
     localStorage.setItem(stat, "0");
     document.querySelector(`.${stat} span`).innerHTML = "0";
   } else {
-    document.querySelector(`.${stat} span`).innerHTML = parseInt(value);
+    document.querySelector(`.${stat} span`).innerHTML = value;
   }
 }
 

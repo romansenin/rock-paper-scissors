@@ -6,12 +6,15 @@ const computerBox = battleDiv.querySelector(".box:last-child");
 const computerImg = computerBox.querySelector("img");
 const restartDiv = document.querySelector(".restart");
 const restartBtn = restartDiv.querySelector("button");
+const resetStatsBtn = document.getElementById("reset-btn");
 
 displayStats();
 
 document.querySelectorAll(".selection .box").forEach((box) => {
   box.onclick = handleClick;
 });
+
+resetStatsBtn.onclick = resetStats;
 
 restartBtn.onclick = function () {
   restartDiv.style.display = "none";
@@ -98,11 +101,6 @@ function displayStats() {
   });
 }
 
-function incrementStat(stat) {
-  localStorage.setItem(stat, parseInt(localStorage.getItem(stat)) + 1);
-  displayStat(stat);
-}
-
 function displayStat(stat) {
   const value = localStorage.getItem(stat);
   if (!value) {
@@ -111,4 +109,16 @@ function displayStat(stat) {
   } else {
     document.querySelector(`.${stat} span`).innerHTML = parseInt(value);
   }
+}
+
+function incrementStat(stat) {
+  localStorage.setItem(stat, parseInt(localStorage.getItem(stat)) + 1);
+  displayStat(stat);
+}
+
+function resetStats() {
+  ["wins", "ties", "losses"].forEach((stat) => {
+    localStorage.setItem(stat, "0");
+  });
+  displayStats();
 }

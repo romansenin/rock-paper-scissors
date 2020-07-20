@@ -8,45 +8,50 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Rock, Paper, Scissors!</h1>
+    <div class="container">
+      <h1>Rock, Paper, Scissors!</h1>
+      <div class="main-content">
+        <div class="selection">
+          <div class="box" data-itemname="Rock">
+            <div class="box-image">
+              <img src="./assets/images/rock.png" alt="Rock" />
+            </div>
+          </div>
+          <div class="box" data-itemname="Paper">
+            <div class="box-image">
+              <img src="./assets/images/paper.png" alt="Paper" />
+            </div>
+          </div>
+          <div class="box" data-itemname="Scissors">
+            <div class="box-image">
+              <img src="./assets/images/scissors.png" alt="Scissors" />
+            </div>
+          </div>
+        </div>
+        <div class="battle">
+          <div class="box">
+            <div class="box-image">
+              <img src="./assets/images/scissors.png" alt="Scissors" />
+            </div>
+          </div>
+          <div class="box">
+            <div class="box-image">
+              <img src="" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="restart">
+        <button id="btn-restart">Play Again</button>
+      </div>
+    </div>
     <div class="stats">
-      <div class="wins">Won: <span></span></div>
-      <div class="ties">Tied: <span></span></div>
-      <div class="losses">Lost: <span></span></div>
-    </div>
-    <div class="main-container">
-      <div class="selection">
-        <div class="box" data-itemname="Rock">
-          <div class="box-image">
-            <img src="./assets/images/rock.png" alt="Rock" />
-          </div>
-        </div>
-        <div class="box" data-itemname="Paper">
-          <div class="box-image">
-            <img src="./assets/images/paper.png" alt="Paper" />
-          </div>
-        </div>
-        <div class="box" data-itemname="Scissors">
-          <div class="box-image">
-            <img src="./assets/images/scissors.png" alt="Scissors" />
-          </div>
-        </div>
+      <div class="top-box">
+        <div class="wins">Won: <span></span></div>
+        <div class="ties">Tied: <span></span></div>
+        <div class="losses">Lost: <span></span></div>
       </div>
-      <div class="battle">
-        <div class="box">
-          <div class="box-image">
-            <img src="./assets/images/scissors.png" alt="Scissors" />
-          </div>
-        </div>
-        <div class="box">
-          <div class="box-image">
-            <img src="" alt="" />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="restart">
-      <button id="btn-restart">Play Again</button>
+      <button id="reset-btn">Reset Stats</button>
     </div>
     <script src="./index.js"></script>
   </body>

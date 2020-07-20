@@ -5,28 +5,30 @@ body {
   box-sizing: border-box;
 }
 
+.container {
+  padding: 20px;
+}
+
 h1 {
   margin: 20px 0;
   text-align: center;
 }
 
-.main-container {
+.main-content {
   display: flex;
   justify-content: center;
-  transform: translateX(-5em);
 }
 
 .stats {
   border: 1px solid #eee;
   padding: 12px;
-  float: left;
-  height: 18em;
-  width: 5em;
-  box-sizing: content-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  bottom: 0;
+  line-height: 1.3;
 }
 
 .stats,
@@ -39,6 +41,19 @@ h1 {
 .battle {
   display: flex;
   border: 1px solid #eee;
+}
+
+.stats .top-box {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stats button {
+  padding: 2px;
+  margin-top: 5px;
+  cursor: pointer;
 }
 
 .box {
@@ -69,8 +84,8 @@ h1 {
 .box .box-image {
   display: flex;
   align-items: center;
-  width: 180px;
-  height: 18em;
+  width: 10em;
+  height: 17em;
 }
 
 .box .box-image img {

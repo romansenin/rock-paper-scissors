@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Rowdies', cursive;
+  font-family: "Rowdies", cursive;
 }
 
 h1 {
@@ -110,4 +110,39 @@ h1 {
 
 .button:hover {
   background-color: #eee;
+}
+
+@media screen and (max-width: 900px) {
+
+  h1 {
+    font-size: 1.5em;
+    margin: 3.5em 0 0.5em;
+  }
+
+  .box .box-image {
+    width: 8em;
+    height: 15em;
+  }
+  .stats {
+    padding: 13px;
+    line-height: 1.2;
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .box .box-image {
+    width: 7em;
+    height: 14em;
+  }
+  .stats {
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .box .box-image {
+    width: 5em;
+    height: 12em;
+  }
 }

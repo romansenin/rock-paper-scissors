@@ -27,7 +27,6 @@ restartBtn.onclick = function () {
 function handleClick() {
   selectionDiv.style.display = "none";
   battleDiv.style.display = "flex";
-  battleDiv.style.opacity = 1;
 
   const userChoice = this.getAttribute("data-itemname");
   userImg.src = generateSrc(userChoice);
@@ -54,9 +53,8 @@ async function playGame(userChoice) {
     // tie
     incrementStat("ties");
     // set both user's and computer's boxes to green background color
-    battleDiv.querySelector(".box").style.backgroundColor = "#00ff00";
-    battleDiv.querySelector(".box:last-child").style.backgroundColor =
-      "#00ff00";
+    userBox.style.backgroundColor = "#00ff00";
+    computerBox.style.backgroundColor = "#00ff00";
   } else if (
     // user wins
     (userChoice === "R" && computerChoice === "S") ||
@@ -65,13 +63,12 @@ async function playGame(userChoice) {
   ) {
     incrementStat("wins");
     // set user's box to green background color
-    battleDiv.querySelector(".box").style.backgroundColor = "#00ff00";
+    userBox.style.backgroundColor = "#00ff00";
   } else {
     // computer wins
     incrementStat("losses");
     // set computer's box to green background color
-    battleDiv.querySelector(".box:last-child").style.backgroundColor =
-      "#00ff00";
+    computerBox.style.backgroundColor = "#00ff00";
   }
   restartDiv.style.display = "flex";
 }
